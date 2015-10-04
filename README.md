@@ -3,5 +3,5 @@
 #Execution:
 #linux platform
 
-gcc flea.c -o flea
+gcc flea.c -o flea;
 flea
