@@ -30,7 +30,7 @@ int main()
 	if(lm_dist == rm_dist)
 		max_jumps = 0;
 	else
-		max_jumps = (int)(16*(target/abs(lm_dist-rm_dist)));
+		max_jumps = (int)(1*(target/abs(lm_dist-rm_dist)));
 	
 	travel(&ways, target, trvld_dist, rm_dist, lm_dist, FRONT, max_jumps, total_jumps);
 	
@@ -63,11 +63,13 @@ int travel(unsigned int *ways, int target, int trvld_dist, int rm_dist, int lm_d
 			
 	if(dir == FRONT) {
 //	    printf("Front-");
+		trvld_dist += rm_dist;
 	} else if(dir == BACK) {
 //	    printf("Back-");
+		trvld_dist -= lm_dist;
 	}
 	
-	printf("\n%d,%d,%d,%d,%d", *ways, target, trvld_dist, rm_dist, lm_dist);
+//	printf("\n%d,%d,%d,%d,%d", *ways, target, trvld_dist, rm_dist, lm_dist);
 	if(trvld_dist == target) {
 //		printf("\ntarget acheived");
 		(*ways)++;
@@ -80,6 +82,6 @@ int travel(unsigned int *ways, int target, int trvld_dist, int rm_dist, int lm_d
 		return 0;
 	}
 
-	travel(ways, target, trvld_dist-lm_dist, rm_dist, lm_dist, BACK, max_jumps, total_jumps+1);
-	travel(ways, target, trvld_dist+rm_dist, rm_dist, lm_dist, FRONT, max_jumps, total_jumps+1);	
+	travel(ways, target, trvld_dist, rm_dist, lm_dist, BACK, max_jumps, total_jumps+1);
+	travel(ways, target, trvld_dist, rm_dist, lm_dist, FRONT, max_jumps, total_jumps+1);	
 }
