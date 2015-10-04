@@ -30,7 +30,7 @@ int main()
 	if(lm_dist == rm_dist)
 		max_jumps = 0;
 	else
-		max_jumps = (int)(1*(target/abs(lm_dist-rm_dist)));
+		max_jumps = (int)(16*(target/abs(lm_dist-rm_dist)));
 	
 	travel(&ways, target, trvld_dist, rm_dist, lm_dist, FRONT, max_jumps, total_jumps);
 	
